@@ -1,0 +1,10 @@
+Reason: the hashcode() is not be overrided. It will return the different objects hash values by default even they have the
+same name and salary.
+
+Solution:
+Override the hashcode() method
+
+ @Override
+    public int hashCode() {
+        return salary * name.hashCode();
+    }
