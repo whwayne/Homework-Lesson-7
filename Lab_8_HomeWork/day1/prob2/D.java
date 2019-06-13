@@ -32,4 +32,20 @@ public class D {
         pi.sort(products, SortMethod.BYPRICE);
         System.out.println(products);
     }
+
+    public static class B {
+
+        public static void main(String[] args) {
+
+            List<Product> products = new ArrayList<>();
+            products.add(new Product("Car", 100000, 1));
+            products.add(new Product("Bike", 1000, 2));
+            products.add(new Product("Shoes", 60, 3));
+            ProductTitleComparator pi = new ProductTitleComparator();
+            Collections.sort(products,pi);
+            System.out.println(products);
+
+        }
+
+    }
 }

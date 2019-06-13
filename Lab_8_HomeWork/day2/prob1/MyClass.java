@@ -13,6 +13,10 @@ public class MyClass {
     }
 
     public  boolean myMethod(MyClass cl){
+        Predicate<MyClass> p = o ->this.equals(o);
+        if(p.test(cl)) {
+            return true;
+        }
         return false;
     }
 
@@ -29,7 +33,8 @@ public class MyClass {
         MyClass myClass1 = new MyClass(1,"hello");
         MyClass myClass2 = new MyClass(1,"hello");
 
-       // Predicate<MyClass> predicate
+       boolean equality = myClass1.myMethod(myClass2);
+       System.out.println(equality);
 
 
 

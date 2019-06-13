@@ -1,13 +1,11 @@
-package Lab_8_HomeWork.prob2;
-
+package Lab_8_HomeWork.day1.prob2;
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
+
 
 public class B {
-
     public static void main(String[] args) {
-
         List<Product> products = new ArrayList<>();
         products.add(new Product("Car", 100000, 1));
         products.add(new Product("Bike", 1000, 2));
@@ -15,7 +13,5 @@ public class B {
         ProductTitleComparator pi = new ProductTitleComparator();
         Collections.sort(products,pi);
         System.out.println(products);
-
     }
-
 }

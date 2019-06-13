@@ -1,4 +1,4 @@
-package Lab_8_HomeWork.day1;
+package Lab_8_HomeWork.day1.prob1;
 import java.util.ArrayList;
 import java.util.Collections;
 import  java.util.List;
