@@ -2,7 +2,7 @@ package Lab_8_HomeWork.day2.prob4;
 
 import java.util.Comparator;
 import java.util.Arrays;
-import java.util.function.Consumer;
+import java.util.List;
 
 public class Main {
 
@@ -13,10 +13,9 @@ public class Main {
 
         Comparator<String> comparator = String::compareToIgnoreCase;
         Arrays.sort(names, comparator);
+        List<String> list = Arrays.asList(names);
 
-       for(String s : names) {
-           System.out.print(s + " ");
-       }
+        list.forEach(s -> System.out.print(s + " "));
     }
 
 }
