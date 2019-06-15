@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Stream;
 
 public class Main {
 
@@ -42,7 +41,7 @@ public class Main {
         sets.add(set3);
 
         System.out.println(sets);
-        Set<String> newsets = union(sets);
-        System.out.println(newsets);
+        Set<String> newSets = union(sets);
+        System.out.println(newSets);
     }
 }
