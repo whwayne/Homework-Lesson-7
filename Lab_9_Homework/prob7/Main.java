@@ -17,16 +17,29 @@ public class Main {
                 new Employee("Donald", "Trump", 100000));
 
         //your stream pipeline here
-        //Comparator<Employee> firstNameComparator = Comparator.comparing(Employee::getFirstName);
+        /*
         String res =
                 list.stream()
-                .filter(e -> e.salary > 100000)
-                .filter(e -> e.lastName.matches("^[N-Z].*"))
+                .filter(e -> e.getSalary() > 100000)
+                .filter(e -> e.getLastName().matches("^[N-Z].*"))
                 .sorted(Comparator.comparing(Employee::getFirstName))
-                .map(e -> e.firstName + " " + e.lastName)
+                .map(e -> e.getFirstName() + " " + e.getLastName())
                 .collect(Collectors.joining(", "));
 
+         */
+
+        String res = SALARY_NAME.apply(list, 100000, "^[N-Z].*");
         System.out.println(res);
     }
+
+    public static final TriFunction<List<Employee>, Integer, String, String>  SALARY_NAME
+            = (list, int_salary, lastName)
+            ->list.stream()
+            .filter(e -> e.getSalary() > int_salary)
+            .filter(e -> e.getLastName().matches(lastName))
+            .sorted(Comparator.comparing(Employee::getFirstName))
+            .map(e -> e.getFirstName() + " " + e.getLastName())
+            .collect(Collectors.joining(", "));
+
 
 }
