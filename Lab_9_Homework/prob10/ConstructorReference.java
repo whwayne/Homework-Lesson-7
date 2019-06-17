@@ -1,14 +1,8 @@
 package Lab_9_Homework.prob10;
 
 import Lab_9_Homework.prob7.TriFunction;
-
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
+
 
 class Human
 {

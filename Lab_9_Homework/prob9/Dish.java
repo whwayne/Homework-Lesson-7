@@ -1,6 +1,7 @@
 package Lab_9_Homework.prob9;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Dish {
 
@@ -50,5 +51,77 @@ public class Dish {
                     new Dish("prawns", false, 400, Dish.Type.FISH),
                     new Dish("salmon", false, 450, Dish.Type.FISH));
 
+    //a. Is there any Vegetarian meal available ( return type boolean)
+    public static boolean isVegetarianAvail(List<Dish> menu) {
+         Optional<Dish> isVegAvail =
+                 menu.stream()
+                 .filter(d -> d.isVegetarian() == true)
+                 .findAny();
+          System.out.println(isVegAvail.isPresent());
+          return isVegAvail.isPresent();
+    }
+
+    //b. Is there any healthy menu have calories less than 1000 ( return type boolean)
+    public static boolean isCaloriesLessThan100(List<Dish> menu) {
+        Optional<Dish> isLess100 =
+                menu.stream()
+                        .filter(d -> d.getCalories() < 100)
+                        .findAny();
+        System.out.println(isLess100.isPresent());
+        return isLess100.isPresent();
+    }
+
+    //c. Is there any unhealthy menu have calories greater than 1000 ( return type boolean)
+    public static boolean isCaloriesGreaterThan1000(List<Dish> menu) {
+        Optional<Dish> isGreater1000 =
+                menu.stream()
+                        .filter(d -> d.getCalories() > 1000)
+                        .findAny();
+        System.out.println(isGreater1000.isPresent());
+        return isGreater1000.isPresent();
+    }
+
+    //d. find and return the first item for the type of MEAT( return type Optional<Dish>)
+    public static Optional<Dish> firstMeatItem(List<Dish> menu) {
+        Optional<Dish> firstMeat =
+                menu.stream()
+                        .filter(d -> d.getType() == Type.MEAT)
+                        .findFirst();
+        firstMeat.ifPresent(System.out::println);
+        return firstMeat;
+    }
+
+    //e. calculateTotalCalories() in the menu using reduce. (return int)
+    public static int calculateTotalCalories(List<Dish> menu) {
+         List<Integer> totalCaloriesList = menu.stream()
+                                        .map(d -> d.getCalories())
+                                        .collect(Collectors.toList());
+        // System.out.println(totalCaloriesList);
+         Optional<Integer> totalCalories = totalCaloriesList.stream().reduce((x, y) -> x + y);
+         System.out.println(totalCalories);
+         return totalCalories.orElse(-1);
+    }
+
+    //f. calculateTotalCaloriesMethodReference()in the menu using MethodReferences. (return int)
+    public static int calculateTotalCaloriesMethodReference(List<Dish> menu) {
+        List<Integer> totalCaloriesList = menu.stream()
+                .map(Dish::getCalories)
+                .collect(Collectors.toList());
+        // System.out.println(totalCaloriesList);
+        Optional<Integer> totalCalories = totalCaloriesList.stream().reduce((x, y) -> x + y);
+        System.out.println(totalCalories);
+        return totalCalories.orElse(-1);
+    }
+
+
+
+    public static void main(String[] args) {
+        isVegetarianAvail(menu);
+        isCaloriesLessThan100(menu);
+        isCaloriesGreaterThan1000(menu);
+        firstMeatItem(menu);
+        calculateTotalCalories(menu);
+        calculateTotalCaloriesMethodReference(menu);
+    }
 
 }
